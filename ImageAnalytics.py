@@ -1,5 +1,5 @@
 from PIL import Image
-from image_analysis.image_helper import prepare_bn_classif
+from image_analysis.image_helper import prepare_for_bn_classif
 from image_analysis.beauty_detection.BeautyClassificator import BeautyClassificator
 from image_analysis.face_detection.FaceDetector import FaceDetector
 
@@ -15,7 +15,7 @@ class ImageAnalytics:
         :param img: Image (PIL)
         :return: score in range [0,2]
         """
-        return self._face_score(img) + self._beauty_score(prepare_bn_classif(img))
+        return self._face_score(img) + self._beauty_score(prepare_for_bn_classif(img))
 
     def _face_score(self, img):
         """

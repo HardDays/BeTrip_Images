@@ -13,10 +13,10 @@ def open_img(path_to_img) -> Image:
 
 def open_img_for_bn_classif(path_to_img, target_size=tuple((299,299)), grayscale=False):
     img = open_img(path_to_img)
-    return prepare_bn_classif(img)
+    return prepare_for_bn_classif(img)
 
 
-def prepare_bn_classif(img: Image, target_size=tuple((299,299)), grayscale=False):
+def prepare_for_bn_classif(img: Image, target_size=tuple((299, 299)), grayscale=False):
     if grayscale:
         img = img.convert('L')
     else:
