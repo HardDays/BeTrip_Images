@@ -17,9 +17,13 @@ class BeautyClassificator(object):
         self.image_data_generator = ImageDataGenerator(rescale=1. / 255)
     
     def is_beautiful(self, img: Image):
-        x = img_to_array(img, dim_ordering=K.image_dim_ordering())
-        x = self.image_data_generator.random_transform(x)
-        x = self.image_data_generator.standardize(x)
-        y_probabilities = self.model.predict(x=np.array([x]), batch_size=self.batch_size)
-        y_classes = probas_to_classes(y_probabilities)
-        return y_classes[0], y_probabilities.max()
+        try:
+            x = img_to_array(img, dim_ordering=K.image_dim_ordering())
+            x = self.image_data_generator.random_transform(x)
+            x = self.image_data_generator.standardize(x)
+            y_probabilities = self.model.predict(x=np.array([x]), batch_size=self.batch_size)
+            y_classes = probas_to_classes(y_probabilities)
+            return y_classes[0], y_probabilities.max()
+        except Exception as e:
+            print(e)
+            return 0, 1

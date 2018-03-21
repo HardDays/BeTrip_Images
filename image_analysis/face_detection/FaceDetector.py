@@ -29,10 +29,14 @@ class FaceDetector:
         :param img: picture to find aces on
         :return: boolean indicator
         """
-        if self._is_selfie(*self._find_faces(img)):
+        try:
+            if self._is_selfie(*self._find_faces(img)):
+                return True
+            else:
+                return False
+        except Exception as e:
+            print(e)
             return True
-        else:
-            return False
     
     def _find_faces(self, image: Image):
         """
