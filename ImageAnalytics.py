@@ -18,9 +18,9 @@ class ImageAnalytics:
         :param img: Image (PIL)
         :return: score in range [0,2]
         """
-        return self._face_score(img) + self._beauty_score(prepare_for_bn_classif(img))
-
-    def _face_score(self, img):
+        return self.get_face_score(img) + self.get_beauty_score(prepare_for_bn_classif(img))
+    
+    def get_face_score(self, img):
         """
         Gives image score 0 if it contains faces and 1 otherwise
         :param img: Image
@@ -29,7 +29,7 @@ class ImageAnalytics:
         face = self.fd.is_with_faces(img)
         return int(not face)
 
-    def _beauty_score(self, img):
+    def get_beauty_score(self, img):
         """
         Gives image a score according to its beauty. Higher score corresponds to more beautiful images.
         :param img: Image
