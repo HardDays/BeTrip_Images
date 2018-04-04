@@ -14,6 +14,14 @@ class BeautyClassificator(object):
         self.image_data_generator = ImageDataGenerator(rescale=1. / 255)
     
     def is_beautiful(self, img: Image):
+        """
+        Scores how beautiful is picture.
+        :param img: Image object
+        :return: class, it's probability
+        where:
+            class - 0(not beautiful) or 1(beautiful)
+            probability - how probable is that class
+        """
         try:
             x = img_to_array(img, dim_ordering=K.image_dim_ordering())
             x = self.image_data_generator.random_transform(x)

@@ -26,8 +26,8 @@ class FaceDetector:
     def is_with_faces(self, img: Image):
         """
         Indicates whether there were faces detected on the image
-        :param img: picture to find aces on
-        :return: boolean indicator
+        :param img: Image object
+        :return: boolean indicator: True if there are faces on the image
         """
         try:
             if self._is_selfie(*self._find_faces(img)):
