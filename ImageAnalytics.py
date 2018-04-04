@@ -1,13 +1,16 @@
 from PIL import Image
-from image_analysis.image_helper import prepare_for_bn_classif
-from image_analysis.beauty_detection.BeautyClassificator import BeautyClassificator
-from image_analysis.face_detection.FaceDetector import FaceDetector
+
+from .helpers.DataManager import DataManager
+from .image_analysis.image_helper import prepare_for_bn_classif
+from .image_analysis.beauty_detection.BeautyClassificator import BeautyClassificator
+from .image_analysis.face_detection.FaceDetector import FaceDetector
 
 
 class ImageAnalytics:
     def __init__(self):
         self.fd = FaceDetector()
-        self.bc = BeautyClassificator()
+        self.dm = DataManager()
+        self.bc = BeautyClassificator(self.dm.bn_model)
     
     def get_score(self, img: Image):
         """
@@ -34,10 +37,3 @@ class ImageAnalytics:
         """
         beautiful, prob = self.bc.is_beautiful(img)
         return int(beautiful) * prob
-
-
-# from image_analysis.image_helper import open_img
-# ia = ImageAnalytics()
-# im = open_img("/Users/maria/BeTrip/instagram/1/1/1.jpg")
-# score = ia.get_score(im)
-# print(score)

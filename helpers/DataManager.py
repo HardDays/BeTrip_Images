@@ -1,10 +1,9 @@
 import os
-# from .Paths import model_weights, model_name
-from helpers import Paths
+from . import Paths
 from keras.models import model_from_json
 
 
-class DataMenager:
+class DataManager:
     bn_model = None
     
     def __init__(self):

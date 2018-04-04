@@ -3,17 +3,14 @@ from PIL import Image
 from keras.preprocessing.image import ImageDataGenerator, img_to_array
 from keras.utils.np_utils import probas_to_classes
 from keras import backend as K
-import os
-
-from helpers.DataMenager import DataMenager
 
 
 class BeautyClassificator(object):
     img_width, img_height = 299, 299
     batch_size = 32
     
-    def __init__(self):
-        self.model = DataMenager().bn_model
+    def __init__(self, model):
+        self.model = model
         self.image_data_generator = ImageDataGenerator(rescale=1. / 255)
     
     def is_beautiful(self, img: Image):
