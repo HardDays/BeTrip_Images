@@ -31,7 +31,7 @@ idna==2.5
 imutils==0.4.3
 itsdangerous==0.24
 jedi==0.10.2
-Jinja2==2.10
+Jinja2==2.11.3
 joblib==0.11
 jsonschema==2.6.0
 Keras==1.2.1
