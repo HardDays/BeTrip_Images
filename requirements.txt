@@ -32,7 +32,7 @@ imutils==0.4.3
 itsdangerous==0.24
 jedi==0.10.2
 Jinja2==2.10
-joblib==0.11
+joblib==1.2.0
 jsonschema==2.6.0
 Keras==1.2.1
 langdetect==1.0.7
